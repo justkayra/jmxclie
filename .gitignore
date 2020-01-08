@@ -3,3 +3,8 @@
 
 # Ignore Gradle build output directory
 build
+/.gradle/
+/gradle/wrapper/
+gradlew
+gradlew.bat
+settings.gradle
