@@ -20,15 +20,15 @@ import java.util.Set;
 public class SystemConfigClient {
 
     public static void main(String[] args) throws IOException, MalformedObjectNameException {
-        String host = "10.122.138.34";
+        String host = "10.0.75.1";
         int port = 7155;
-
-        JMXServiceURL url = new JMXServiceURL("service:jmx:rmi:///jndi/rmi://" + host + ":" + port + "/jmxrmi");
+        String urlString = "service:jmx:rmi:///jndi/rmi://" + host + ":" + port + "/jmxrmi";
+        JMXServiceURL url = new JMXServiceURL(urlString);
         JMXConnector jmxc = JMXConnectorFactory.connect(url, null);
         MBeanServerConnection connection = jmxc.getMBeanServerConnection();
-
+        System.out.println("connected to :" + urlString);
         int count = connection.getMBeanCount();
-        System.out.println(count);
+        System.out.println("beans count=" + count);
         jmxc.close();
 
     }
